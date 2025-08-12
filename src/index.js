@@ -5,6 +5,9 @@ const Rutas = require("./routes/index.js")
 //app
 const app = express()
 
+//recepción de json
+app.use(express.json())
+
 //variables
 const PORT=3000
 

@@ -1,14 +1,13 @@
 const express = require("express");
-const sequelize = require("./../database/conexion.js")
+const libroController = require("./../controllers/libro.controller.js")
 
 const Route = express.Router();
 
 //API CRUD libros (endpoint)
-Route.get("/libros", async function(req, res){
-    // consulta sql a db
-    const [results] = await sequelize.query("SELECT * FROM libros")
-    const libros = results;
-    return res.json(libros);
-});
+Route.get("/libros", libroController.funListaLibros);
+Route.post("/libros", libroController.funGuardarLibro);
+Route.get("/libros/:id", libroController.funMostrarLibro);
+Route.put("/libros/:id", libroController.funModificarLibro);
+Route.post("/libros/:id", libroController.funEliminarLibro);
 
 module.exports = Route
