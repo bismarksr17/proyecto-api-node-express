@@ -14,6 +14,10 @@ async function funGuardarLibro(req, res){
 }
 
 async function funMostrarLibro(req, res){
+    const {id} = req.body
+    const [results] = await sequelize.query(`SELECT * FROM bd_biblioteca_api.libros WHERE id = ${id}`)
+    const libro = results
+    return res.json(libro)
 
 }
 async function funModificarLibro(req, res){
